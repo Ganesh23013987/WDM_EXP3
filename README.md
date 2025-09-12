@@ -44,58 +44,59 @@ from collections import defaultdict
 from itertools import combinations
 
 # Function to generate candidate k-item sequences
-def generate_candidates(dataset, k, min_support):
+def generate_candidates(dataset, k):
     c = defaultdict(int)
     for seq in dataset:
-        for item in combinations(seq, k):
-            c[item] += 1
-    
-    # Keep only frequent patterns
-    frequent = {items: support for items, support in c.items() if support >= min_support}
-    return frequent
+        # flatten into list of items (your version mixes strings/lists)
+        flat_seq = []
+        for itemset in seq:
+            if isinstance(itemset, str):
+                flat_seq.extend(itemset.split(','))   # split commas
+            else:
+                flat_seq.extend(itemset)
+        # ensure uniqueness per sequence
+        for comb in set(combinations(sorted(flat_seq), k)):
+            c[comb] += 1
+    # collect all frequent patterns
+    res = {}
+    for item, support in c.items():
+        if support >= min_support:
+            res[item] = support
+    return res
 
 # Function to perform GSP algorithm
 def gsp(dataset, min_support):
     k = 1
-    fp = dict()
+    fp = defaultdict(int)
+    seq=dataset
     while True:
-        candidates = generate_candidates(dataset, k, min_support)
-        if not candidates:
+        c = generate_candidates(seq, k)
+        if not c:
             break
-        fp.update(candidates)
+        fp.update(c)
         k += 1
     return fp
 
 # Example dataset for each category
 top_wear_data = [
-    ["blouse", "t-shirt", "tank_top"],
-    ["hoodie", "sweater", "top"],
-    ["hoodie"],
-    ["hoodie", "sweater"]
+    [["a"],["b"],["c"],["b","e"],["c","f"],["g"],["a","b","e"]],
+    [["a"],["d"],["b","c"],["c"],["f","g"],["c","h"]],
+    [["b"],["c"],["a","d"],["e"],["b"],["f"],["c","d","f","g","h"]],
+    [["c"],["e","c"],["e","h"]]
 ]
-
 bottom_wear_data = [
-    ["jeans", "trousers", "shorts"],
-    ["leggings", "skirt", "chinos"],
+    [["b","d"],["c"],["b"],["a","c"]],
+    [["b","f"],["c","e"],["b"],["f","g"]],
+    [["a","h"],["b","f"],["a"],["b","f"]],
+    [["b","e"],["c","e"],["d"]],
+    [["a"],["b","d"],["b"],["c"],["b"],["a","d","e"]]
 ]
-
-party_wear_data = [
-    ["cocktail_dress", "evening_gown", "blazer"],
-    ["party_dress", "formal_dress", "suit"],
-    ["party_dress", "formal_dress", "suit"],
-    ["party_dress", "formal_dress", "suit"],
-    ["party_dress", "formal_dress", "suit"],
-    ["party_dress"],
-    ["party_dress"],
-]
-
 # Minimum support threshold
-min_support = 2
+min_support = 3
 
 # Perform GSP algorithm for each category
 top_wear_result = gsp(top_wear_data, min_support)
 bottom_wear_result = gsp(bottom_wear_data, min_support)
-party_wear_result = gsp(party_wear_data, min_support)
 
 # Output the frequent sequential patterns for each category
 print("Frequent Sequential Patterns - Top Wear:")
@@ -112,15 +113,11 @@ if bottom_wear_result:
 else:
     print("No frequent sequential patterns found in Bottom Wear.")
 
-print("\nFrequent Sequential Patterns - Party Wear:")
-if party_wear_result:
-    for pattern, support in party_wear_result.items():
-        print(f"Pattern: {pattern}, Support: {support}")
-else:
-    print("No frequent sequential patterns found in Party Wear.")
 ```
 ### Output:
-<img width="750" height="750" alt="image" src="https://github.com/user-attachments/assets/b30b8eed-2148-47a1-b454-a373a0d2dbb0" />
+<img width="850" height="850" alt="image" src="https://github.com/user-attachments/assets/975c3949-40d1-448d-99ca-c3c3b8e8e581" />
+<img width="850" height="850" alt="image" src="https://github.com/user-attachments/assets/e30b4f62-6811-4d12-9898-a18a956574a0" />
+
 
 ### Visualization:
 ```python
@@ -146,11 +143,11 @@ def visualize_patterns_line(result, category):
 # Visualize frequent sequential patterns for each category using a line plot
 visualize_patterns_line(top_wear_result, 'Top Wear')
 visualize_patterns_line(bottom_wear_result, 'Bottom Wear')
-visualize_patterns_line(party_wear_result, 'Party Wear')
 ```
 ### Output:
-<img width="850" height="850" alt="image" src="https://github.com/user-attachments/assets/c81d25bd-af81-4268-a67b-d81418150fcb" />
-<img width="850" height="850" alt="image" src="https://github.com/user-attachments/assets/eb2e9d9b-3cbb-4561-9691-a90cf48c60f1" />
+
+<img width="850" height="850" alt="image" src="https://github.com/user-attachments/assets/2734d193-2b38-439e-9282-5f18699885ec" />
+<img width="850" height="850" alt="image" src="https://github.com/user-attachments/assets/0e094fd2-9f8e-4823-9b57-ca58c0ec4404" />
 
 
 
