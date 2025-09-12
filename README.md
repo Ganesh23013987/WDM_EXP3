@@ -115,9 +115,8 @@ else:
 
 ```
 ### Output:
-<img width="750" height="750" alt="image" src="https://github.com/user-attachments/assets/975c3949-40d1-448d-99ca-c3c3b8e8e581" />
-<img width="750" height="750" alt="image" src="https://github.com/user-attachments/assets/916d2aa0-846c-4706-8899-7d89bc26a9b4" />
-
+<img width="750" height="750" alt="image" src="https://github.com/user-attachments/assets/6f622373-8628-4031-9aba-8b6baf520eac" />
+<img width="750" height="750" alt="image" src="https://github.com/user-attachments/assets/7f2d9efb-2095-4578-aa6f-b33e0ac6c81c" />
 
 
 ### Visualization:
@@ -146,11 +145,8 @@ visualize_patterns_line(top_wear_result, 'Top Wear')
 visualize_patterns_line(bottom_wear_result, 'Bottom Wear')
 ```
 ### Output:
-
-<img width="850" height="850" alt="image" src="https://github.com/user-attachments/assets/7c807d2e-4539-4752-aa59-8c53e40662b6" />
-<img width="850" height="850" alt="image" src="https://github.com/user-attachments/assets/c20f6bb1-6e5b-4f03-a524-c13a0655a0f4" />
-
-
+<img width="850" height="850" alt="image" src="https://github.com/user-attachments/assets/1a93f701-d499-482c-98b7-45df12a6ada4" />
+<img width="850" height="850" alt="image" src="https://github.com/user-attachments/assets/4ebe4e80-f239-492b-9a8e-26df53d3aa08" />
 
 
 ### Result:
