@@ -147,8 +147,9 @@ visualize_patterns_line(bottom_wear_result, 'Bottom Wear')
 ```
 ### Output:
 
-<img width="850" height="850" alt="image" src="https://github.com/user-attachments/assets/2734d193-2b38-439e-9282-5f18699885ec" />
-<img width="850" height="850" alt="image" src="https://github.com/user-attachments/assets/0e094fd2-9f8e-4823-9b57-ca58c0ec4404" />
+<img width="850" height="850" alt="image" src="https://github.com/user-attachments/assets/7c807d2e-4539-4752-aa59-8c53e40662b6" />
+<img width="850" height="850" alt="image" src="https://github.com/user-attachments/assets/c20f6bb1-6e5b-4f03-a524-c13a0655a0f4" />
+
 
 
 
