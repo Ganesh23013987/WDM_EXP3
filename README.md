@@ -116,7 +116,8 @@ else:
 ```
 ### Output:
 <img width="750" height="750" alt="image" src="https://github.com/user-attachments/assets/975c3949-40d1-448d-99ca-c3c3b8e8e581" />
-<img width="750" height="750" alt="image" src="https://github.com/user-attachments/assets/e30b4f62-6811-4d12-9898-a18a956574a0" />
+<img width="750" height="750" alt="image" src="https://github.com/user-attachments/assets/916d2aa0-846c-4706-8899-7d89bc26a9b4" />
+
 
 
 ### Visualization:
